@@ -1,18 +1,16 @@
 Description: Replace specific commands by Debian commands.
-Origin: Norbert Preining <preining@debian.org>
-Forwarded: No. Patch is specific to Debian.
 Author: Norbert Preining <preining@debian.org>
-Last-Update: 20210929
+Forwarded: not-needed
+Origin: Debian
+Last-Update: 2021-09-29
 
 ---
  latexmk.pl |   14 ++++++++------
  1 file changed, 8 insertions(+), 6 deletions(-)
 
-Index: latexmk-4.75/latexmk.pl
-===================================================================
---- latexmk-4.75.orig/latexmk.pl	2021-09-29 23:43:22.499527865 +0200
-+++ latexmk-4.75/latexmk.pl	2021-09-29 23:43:32.000000000 +0200
-@@ -873,13 +873,15 @@
+--- latexmk.orig/latexmk.pl
++++ latexmk/latexmk.pl
+@@ -1127,13 +1127,15 @@
      #         cannot be updated.  (acroread under MSWIN)
      #    4 => Run command to update.  Command in $dvi_update_command, 
      #    $ps_update_command, $pdf_update_command.
@@ -30,7 +28,7 @@ Index: latexmk-4.75/latexmk.pl
  #    if ( defined $ps_update_signal ) { 
  #        $ps_update_method = 2;  # gv responds to signal to update
  #        $ps_previewer  = 'start gv -nowatch';
-@@ -892,10 +894,10 @@
+@@ -1146,10 +1148,10 @@
      # Turn off the fancy options for gv.  Regular gv likes -watch etc
      #   GNU gv likes --watch etc.  User must configure
      $ps_update_method = 0;  # gv -watch watches the ps file

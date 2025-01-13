@@ -779,7 +779,170 @@ From v. 4.74 to 4.74b
   Turn back on default to report rc files read.
   Add options -rc-report, -rc-report-, -dir_report, -dir_report-.
 
-From v. 4.74 to 4.74b
+From v. 4.74b to 4.75
   For biber, add any dependency on configuration file.
   When -time option used, report running times for all rules
 
+From v. 4.75 to 4.76
+  In fdb_latexmk file, sort generated file list by name.
+  If nothing is done in a rerun, don't do the unnecessary rewrite of
+     fdb_latexmk file.
+  Improve some diagnostics.
+  Add /etc to list of locations for system rc files (with Unix-like OSs).
+
+From v. 4.76 to 4.77
+  Clean up and improvements in warnings etc
+  Ensured systematic use of STDOUT and STDERR, to more or less match that
+    of  *tex: STDOUT for progress messages, and, normally, errors and
+    warnings caused by the compilation of a document.  STDERR is for
+    within-latexmk errors etc: incorrect command line, configuration errors
+    etc.  
+  Internal improvements and bug fixes.
+  Correctly handle non-ASCII filenames, UTF-8 coding of log files etc,
+    including on MS Wndows, and including correct parsing of wrapped
+    lines in log files.  Adjust method of unwrapping of wrapped lines in
+    log file according to whether latex/pdflatex, lualatex or xelatex is
+    used, thereby reducing misparses of information in log file.
+  Reinstate Windows batch file for running latexmk, now called latexmk.cmd.
+  Remove code that automatically measured a possible offset between clock
+    time for the system on which latexmk runs and the system on which files
+    are stored. (This was used to adjust a test for whether an expected
+    file is generated on the current run of *latex or is a relic from a
+    past time.) Modern OSs, by default, synchronize system time with a time
+    server. 
+
+From v. 4.77 to 4.78
+  Option -dvilua to generate dvi file by lualatex
+  Option -xdv to generate xdv file by xelatex
+  To support these, change in definition of $dvi_mode, and new variables
+     $dvilualatex, $xdv_mode.
+  Bug corrections etc.
+  Configuration variable $bad_warning_is_error to allow certain bad warnings
+     in log file (e.g., '\end inside ...') to be treated by latexmk as if
+     *latex had reported an actual error.
+  On MS-Windows, correctly handle non-ASCII names for file and directory
+    variables set in rc files.
+  Other improvements in treatment of non-ASCII characters in filenames.
+
+From v. 4.78 to 4.79
+  Check rc files for valid UTF-8; remove initial BOM.
+  Improve some warnings and messages.
+  Correctly implement conditional use of biber, to be able to preserve bbl
+    file when bib file doesn't exist.  This behavior now matches the
+    conditional use of bibtex.
+  Solve problem that processing times under Windows were reported as zero.
+  Solve occasional problems caused by granularity of file times when detecting
+    files generated during a run of *latex
+  Configurably change default location of fls file to aux directory, to match
+    behavior of recent versions of MiKTeX.
+  Update documentation especially about aux and output directories.
+  Add configuration variable (not yet documented) $filetime_slop, with
+    default value 2.  When a test for whether a file was generated on the
+    current run of *latex, the file modification time is permitted to be
+    $filetime_slop seconds older than the system time at the start of a
+    run of *latex while still being treated as a generated file.  This
+    allows for differences in granularity between the different times
+    involved, and especially the 2 sec granularity on FAT file systems.
+
+From v. 4.79 to 4.80
+  Improved treatment of detection of whether files (e.g., .log) have been
+    generated on current run or are leftover from an earlier run. Code now
+    compensates (and diagnoses) time offset between computer running
+    latexmk and file server.
+  Allow placeholder %C in argument to set_tex_cmds, to allow more flexible
+    construction of command lines for all *latex.
+  Fix problems of compatibility with the xr package.
+  Allow escaping of spaces in names of files in deps files, as needed by
+    make. Escaping can be unix-style or nmake-style.
+  Various bug fixes and corrections, improvements in error and warning
+    messages, and corrections to documentation.
+
+From v. 4.80 to 4.81
+  Fix various problems when filenames contain non-ASCII characters,
+    especially when MSYS is used.
+  Fix problems with analyzing wrapped lines in log files, especially with
+    lualatex. 
+  With options like -dvi that set the kind of output file, turn off
+    settings corresponding to incompatible options.
+  Improved warning and error messages.
+  Fix problem when using the $use_make_for_missing_files, with the search
+    over possible extensions for a missing file.
+  Add .run.xml to the list of generated extensions in @generated_exts.
+  Correct the behavior after errors.  Previously force_mode didn't work as
+    documented, terminating processing too early, while in
+    preview_continuous_mode, incorrect extra runs were sometimes made. 
+  Other bug fixes.
+
+From v. 4.81 to 4.82
+  Fixed various anomalies in working with biber, especially under error conditions.
+  Fixed various anomalies with use of -bibtex- and -bibtex-cond options.
+  Fixed problem that -Werror worked only with bibtex and not biber. (This
+    is the option that causes latexmk to return a non-zero exit code to
+    flag an error when there are missing-citation messages in the .log
+    file.) 
+  Added -dir-report-only option.
+  Fixed lack of quoting on command line to kpsewhich.
+  Implemented support for hilatex (-hnt option, $hnt_mode configuration
+    variable).
+  Allow sleep times of under a second. (That gives very responsive
+    performance on fast computers.)
+  Support ^^ format in .log file for non-ASCII bytes/characters.
+  Document $filetime_causality_threshold configuration variable.
+  Other documentation improvements.
+  
+From v. 4.82 to 4.82a
+  Fixed problem that with the use of %hash_calc_ignore_pattern, warnings
+  about "Use of uninitialized value $_" were given, and some corresponding
+  dependencies were incorrectly treated. 
+
+From v. 4.82a to 4.83
+  Fix bug that sometimes biber is incorrectly run after a *latex run
+    results in an error, with biber then giving an error.
+  Fix problem that if -gg is used with multiple files specified on command
+    line, then generated files are deleted for all by the last file
+    compiled.  (So that -gg wasn't working as intended in this case.)
+  Fixed some bugs with incorrect variable scope.  (These bugs gave
+    incomprehensible error messages about undefined variables!)
+  Restrict warning diagnostics about ^^ constructs in aux file to those
+    involving non-trivial Unicode characters, as against things like ^^M.
+
+From v. 4.83 to 4.84
+  Update example_rcfiles/bib2gls_latexmkrc to deal with situation where
+    .glstex file has basename of .bib file rather than that of main .tex
+   file.
+  Update example_rcfiles/asymptote_latexmkrc.
+  Update example_rcfiles/splitindex_latexmkrc.
+  Add example_rcfiles/memoize_latexmkrc.
+  Improve detection of need to run makeindex (solves non-detection when
+    imakeidx package is used with splitindex option).
+  Implement final-output directory, with option -out2dir, variables
+    $out2_dir, @out2_exts.
+  Document hook mechanism.
+  Document $allow_subdir_creation variable.
+
+From v. 4.84 to 4.85
+  Correct bug that if $out_dir and $out2_dir referred to the same
+    directory, but latexmk didn't detect that, then the subroutine copy
+    reported an error, and latexmk treated that incorrectly as a fatal
+    error.
+
+From v. 4.85 to 4.86
+  Document variable $user_deleted_file_treated_as_changed.
+  Correct problems when main pdf output file is detected as an INPUT file in
+    the .fls file.  (That sometimes affected dependency detection of
+    included graphics files with the same basename as the main .tex
+    document.)
+  Updates to example_rcfiles/xr_latexmkrc, example_rcfiles/pythontex_latexmkrc,
+    example_rcfiles/splitindex_latexmkrc, example_rcfiles/bib2gls_latexmkrc.
+  Correct detection of graphics includes in .log file.
+  Apply autoflush to STDOUT, so that when STDERR and STDOUT are redirected
+    to the same place, the output is correctly ordered.
+  Add base name to the list of items reported with the -dir-report and
+    -dir-report-only options.
+  With -dir-report-only make report for each tex file to be processed.
+  Fix failure of -c and -C with $cleanup_includes_generated = 1; when
+    engine is lualatex or hilatex.
+  Documentation updates.
+  Correct problem that necessary necessary directory/ies not created in aux
+    dir when \include'd file has more than one level of subdirectory.
+  Correct message about up-to-date files when $max_repeat runs exceeded.

@@ -1,3 +1,78 @@
+latexmk (1:4.86~ds-1) unstable; urgency=medium
+
+  * New upstream version; refresh patches.
+    - Repack the orig.tar.gz, remove the pre-generated manual in pdf
+      and txt, regenerate it from the manual page.
+  * Fix doc-base integration.
+  * Fix typos in manual.
+  * Little lintian stuff.
+
+ -- Hilmar Preuße <hille42@debian.org>  Tue, 24 Dec 2024 08:54:52 +0100
+
+latexmk (1:4.85-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Install documentation latexmk.pdf & latexmk.txt
+  * Bump Standards version, no changes needed.
+
+ -- Hilmar Preusse <hille42@web.de>  Sun, 14 Apr 2024 23:25:23 +0200
+
+latexmk (1:4.84-1) unstable; urgency=medium
+
+  * New upstream release, refresh patches.
+
+ -- Hilmar Preusse <hille42@web.de>  Mon, 01 Apr 2024 21:21:17 +0200
+
+latexmk (1:4.83-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Hilmar Preusse <hille42@web.de>  Thu, 01 Feb 2024 23:08:52 +0000
+
+latexmk (1:4.82a-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh, update, remove patches.
+  * Project moved to new page, update d/copyright, d/watch & d/control.
+    (Closes: #1060876).
+
+ -- Hilmar Preusse <hille42@web.de>  Tue, 16 Jan 2024 07:28:30 +0000
+
+latexmk (1:4.80-1) unstable; urgency=medium
+
+  * New upstream release, refresh patches.
+
+ -- Hilmar Preusse <hille42@web.de>  Fri, 07 Apr 2023 23:22:04 +0200
+
+latexmk (1:4.79-1) unstable; urgency=medium
+
+  * New upstream release, refresh patches.
+  * Bump Standards version, no changes needed.
+
+ -- Hilmar Preusse <hille42@web.de>  Mon, 09 Jan 2023 08:23:13 +0100
+
+latexmk (1:4.78-1) unstable; urgency=medium
+
+  * New upstream release, refresh patches, remove / disable
+    obsolete patches.
+
+ -- Hilmar Preusse <hille42@web.de>  Tue, 22 Nov 2022 08:18:28 +0100
+
+latexmk (1:4.77-1) unstable; urgency=medium
+
+  * New upstream release, refresh patches, fix Lintian stuff.
+  * Add autopkgtest.
+
+ -- Hilmar Preusse <hille42@web.de>  Sat, 19 Mar 2022 17:55:58 +0100
+
+latexmk (1:4.76-1) unstable; urgency=medium
+
+  * New upstream release, deactivate obsolete patches, refresh needed.
+  * Remove "Override: I: acute-accent-in-manual-page", correct manual
+    page accordingly.
+
+ -- Hilmar Preusse <hille42@web.de>  Thu, 25 Nov 2021 23:30:41 +0100
+
 latexmk (1:4.75-2) unstable; urgency=medium
 
   * Lintian:
